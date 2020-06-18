@@ -535,7 +535,7 @@ export class ClassVisualizationComponent implements ChangeListener<Class | Predi
       if (oldItem && newItem.id.notEquals(oldItem.id)) {
         // FIXME: api should block until writes are done and not return inconsistent data
         this.loading = true;
-        this.$timeout(() => this.refresh(true), 500);
+        this.$timeout(() => this.refresh(true), 5000);
       } else if (newItem instanceof Class) {
         this.updateClassAndLayout(newItem, mapOptional(oldItem, item => item.id));
       }
