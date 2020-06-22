@@ -536,7 +536,8 @@ export class ClassVisualizationComponent implements ChangeListener<Class | Predi
         // FIXME: api should block until writes are done and not return inconsistent data
         this.loading = true;
         this.$timeout(() => this.refresh(true), 5000);
-      } else if (newItem instanceof Class) {
+      }
+      if (newItem instanceof Class) {
         this.updateClassAndLayout(newItem, mapOptional(oldItem, item => item.id));
       }
     });
