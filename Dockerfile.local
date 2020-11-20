@@ -6,7 +6,7 @@ ARG env
 # Install git
 RUN apk add --update git
 
-# Instal tooling
+# Install tooling
 RUN apk add openssl curl ca-certificates
 
 # Install nginx repo
