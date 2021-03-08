@@ -2450,7 +2450,7 @@ msgid "Fixed value info"
 msgstr "Ennaltamääritelty pakollinen arvo joka täytyy löytyä datasta"
 
 msgid "Pattern"
-msgstr "Säännollinen lauseke"
+msgstr "Säännöllinen lauseke"
 
 msgid "Pattern info"
 msgstr ""
