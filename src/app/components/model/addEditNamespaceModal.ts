@@ -37,7 +37,7 @@ const forbiddenPrefixes: string[] = ['xsd', 'iow', 'text', 'sh', 'afn', 'schema'
   'description', 'editorialNote', 'equivalentClass', 'equivalentProperty', 'example', 'first', 'graph', 'hasPart', 'hasValue', 'homepage',
   'id', 'identifier', 'imports', 'inScheme', 'inValues', 'isDefinedBy', 'isPartOf', 'isResourceIdentifier', 'isXmlAttribute',
   'isXmlWrapper', 'last', 'label', 'language', 'languageIn', 'localName', 'maxCount', 'maxLength', 'memberOf', 'minCount', 'name', 'node',
-  'nodeKind', 'not', 'notCond', 'or', 'orCond', 'path', 'pattern', 'pointXY', 'preferredXMLNamespaceName', 'preferredXMLNamespacePrefix',
+  'nodeKind', 'not', 'notCond', 'or', 'order', 'orCond', 'path', 'pattern', 'pointXY', 'preferredXMLNamespaceName', 'preferredXMLNamespacePrefix',
   'prefLabel', 'property', 'predicate', 'range', 'readOnlyValue', 'references', 'relations', 'requires', 'rootResource', 'rest', 'stem',
   'subClassOf', 'subject', 'subPropertyOf', 'targetClass', 'title', 'type', 'uniqueLang', 'useContext', 'uri', 'versionInfo', 'vertexXY',
   'xor', 'urn', 'http', 'https'].filter(prefix => !technicalNamespaces[prefix]);
