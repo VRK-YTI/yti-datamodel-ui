@@ -94,7 +94,7 @@ export const dateSerializer: Serializer<Moment> = createSerializer(
 export const coordinateSerializer: Serializer<Coordinate> = createSerializer(
   (data: Coordinate) => data.x + ',' + data.y,
   (data: any) => {
-    const split = data.split(',');
+    const split = Array.isArray(data) ? data[0].split(',') : data.split(',');
     if (split.length !== 2) {
       throw new Error('Misformatted coordinate: ' + data);
     }
