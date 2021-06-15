@@ -32,13 +32,44 @@ export class DefaultVisualizationService implements VisualizationService {
       graph: model.id.uri
     };
 
-    return this.$http.get<GraphData>(apiEndpointWithName('framedGraphs'), { params })
+    return this.$http.get<GraphData>(apiEndpointWithName('exportModel'), { params })
       .then(expandContextWithKnownModels(model))
       .then(response => {
-        const framed = response.data!;
+        const data = response.data!;
+
+        // get all classes from exportModel and map properties
+        const classes = data['@graph']
+          .filter((graph: any) => ['rdfs:Class', 'sh:NodeShape'].includes(graph['@type']))
+          .map((cls: any) => {
+              
+            const propIds = normalizeAsArray(cls.property);
+ 
+            cls.name = this.mapLocalizedValues(cls.name);
+            cls.description = this.mapLocalizedValues(cls.description);
+            
+            cls.property = propIds.map((id: any) => {
+              const property = data['@graph'].find((element: any) => element['@id'] === id);
+
+              if (!property) {
+                return null;
+              }
+              
+              property.name = this.mapLocalizedValues(property.name);
+              property.description = this.mapLocalizedValues(property.description);
+
+              // delete memberOf because it is not needed in visualization
+              delete property.memberOf;
+              
+              return Object.assign({}, ...this.removePrefixes(property));
+            })
+            .filter(Boolean);
+            
+            return Object.assign({}, ...this.removePrefixes(cls));
+        })
+        
         try {
-          return normalizeAsArray(framed['@graph']).map(element => {
-            return new DefaultVisualizationClass(element, framed['@context'], null);
+          return normalizeAsArray(classes).map(element => {
+            return new DefaultVisualizationClass(element, data['@context'], null);
           });
         } catch (error) {
           console.log(error);
@@ -46,6 +77,26 @@ export class DefaultVisualizationService implements VisualizationService {
         }
       });
   }
+
+  private mapLocalizedValues(property: {'@language': string, '@value': string} | {'@language': string, '@value': string}[]) {
+    if (!property) {
+      return {}
+    }
+    const localizations = Array.isArray(property) ? property : [property];
+    const mappedLocalizations: any = {};
+    localizations.map((localization: any) => {
+      mappedLocalizations[localization['@language']] = localization['@value'];
+    });
+    return mappedLocalizations;
+  }
+
+  private removePrefixes(obj: any) {
+    // remove prefixes from keys, e.g. sh:order -> order
+    return Object.keys(obj).map(key => {
+      const newKey = key.replace(/^\w+:/, '');
+      return {[newKey]: obj[key]};
+    });
+  } 
 
   private getModelPositions(model: Model) {
     return this.$http.get<GraphData>(apiEndpointWithName('modelPositions'), { params: { model: model.id.uri } })
