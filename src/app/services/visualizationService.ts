@@ -41,7 +41,6 @@ export class DefaultVisualizationService implements VisualizationService {
         const classes = data['@graph']
           .filter((graph: any) => ['rdfs:Class', 'sh:NodeShape'].includes(graph['@type']))
           .map((cls: any) => {
-              
             const propIds = normalizeAsArray(cls.property);
  
             cls.name = this.mapLocalizedValues(cls.name);
@@ -82,16 +81,16 @@ export class DefaultVisualizationService implements VisualizationService {
     if (!property) {
       return {}
     }
-    const localizations = Array.isArray(property) ? property : [property];
+    const localizations = normalizeAsArray(property)
     const mappedLocalizations: any = {};
-    localizations.map((localization: any) => {
+    localizations.map((localization: {[lang: string]: string}) => {
       mappedLocalizations[localization['@language']] = localization['@value'];
     });
     return mappedLocalizations;
   }
 
+  // remove prefixes from keys, e.g. sh:order -> order
   private removePrefixes(obj: any) {
-    // remove prefixes from keys, e.g. sh:order -> order
     return Object.keys(obj).map(key => {
       const newKey = key.replace(/^\w+:/, '');
       return {[newKey]: obj[key]};
