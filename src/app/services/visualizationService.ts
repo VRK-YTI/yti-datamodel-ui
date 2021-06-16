@@ -15,6 +15,11 @@ export interface VisualizationService {
   updateModelPositions(model: Model, modelPositions: ModelPositions): IPromise<any>;
 }
 
+type LocalizedValue = {
+  '@language': string,
+  '@value': string
+}
+
 export class DefaultVisualizationService implements VisualizationService {
 
   constructor(private $http: IHttpService, private $q: IQService, private frameService: FrameService) {
@@ -77,13 +82,13 @@ export class DefaultVisualizationService implements VisualizationService {
       });
   }
 
-  private mapLocalizedValues(property: {'@language': string, '@value': string} | {'@language': string, '@value': string}[]) {
+  private mapLocalizedValues(property: LocalizedValue | LocalizedValue[]) {
     if (!property) {
       return {}
     }
     const localizations = normalizeAsArray(property)
     const mappedLocalizations: any = {};
-    localizations.map((localization: {[lang: string]: string}) => {
+    localizations.map((localization: LocalizedValue) => {
       mappedLocalizations[localization['@language']] = localization['@value'];
     });
     return mappedLocalizations;
