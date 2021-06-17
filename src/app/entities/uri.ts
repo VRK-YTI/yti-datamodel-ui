@@ -185,14 +185,16 @@ export class Uri {
     if (this.isUrn()) {
       return null;
     } else {
-      const split = splitCurie(this.value);
 
-      if (split && this.context[split.prefix]) {
+      const split = splitCurie(this.value);
+      
+      // if used curie (e.g. ns:ClassName), the name cannot contain # separator
+      if (split && this.context[split.prefix] && split.name.indexOf("#") === -1) {
         return split;
       }
 
       const ns = splitNamespace(this.value);
-
+      
       if (ns) {
         for (const prefix of Object.keys(this.context)) {
           const value = this.context[prefix];
