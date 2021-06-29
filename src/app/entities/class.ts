@@ -163,8 +163,10 @@ export class Class extends AbstractClass implements VisualizationClass {
     if (!toProfile.isOfType('profile')) {
       throw new Error('Class can be copied only to profile: ' + toProfile.id.toString());
     }
+    const ctx = Object.assign({}, this.context, { [toProfile.prefix]: toProfile.namespace })
     const clone = this.clone();
-    clone.id = new Uri(toProfile.namespace + this.id.name, Object.assign({}, this.context, { [toProfile.prefix]: toProfile.namespace }));
+    clone.id = new Uri(toProfile.namespace + this.id.name, ctx);
+    clone.context = ctx
     clone.properties = clone.properties.map(p => p.copy());
     clone.unsaved = true;
     clone.definedBy = toProfile.asDefinedBy();
