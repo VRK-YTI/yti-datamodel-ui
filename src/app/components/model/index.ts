@@ -30,6 +30,7 @@ import { componentDeclaration } from 'app/utils/angular';
 import { module as mod } from './module';
 import { downgradeComponent } from '@angular/upgrade/static';
 import { ModelMainComponent } from './modelMain';
+import { ModelDocumentationComponent } from '../model-documentation/model-documentation.component';
 export { module } from './module';
 
 mod.component('editableRootClass', componentDeclaration(EditableRootClassComponent));
@@ -39,6 +40,8 @@ mod.component('modelPage', componentDeclaration(ModelPageComponent));
 mod.component('newModelPage', componentDeclaration(NewModelPageComponent));
 mod.component('modelForm', componentDeclaration(ModelFormComponent));
 mod.component('modelView', componentDeclaration(ModelViewComponent));
+// TODO: is this needed here?
+// mod.component('modelDocumentation', componentDeclaration(ModelDocumentationComponent));
 mod.component('nonEditableVocabulary', componentDeclaration(NonEditableVocabularyComponent));
 mod.component('vocabulariesView', componentDeclaration(VocabulariesViewComponent));
 mod.component('importedNamespacesView', componentDeclaration(ImportedNamespacesViewComponent));

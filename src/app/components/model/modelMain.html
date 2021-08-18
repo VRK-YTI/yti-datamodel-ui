@@ -42,11 +42,6 @@
           </ul>
         </div>
       </div>
-      <div class="row">
-        <div class="descriptionRow col-12">
-          <app-expandable-text [text]="model!.comment | translateValue:true" [rows]="3"></app-expandable-text>
-        </div>
-      </div>
     </div>
     <ngb-tabset #tabs (tabChange)="onTabChange($event)">
       <ngb-tab id="dataTab" [title]="'Datamodel definition' | translate">
@@ -60,6 +55,17 @@
           <model-view [parent]="editorContainer" [model]="model" [id]="'model'"
                       (deleted)="onModelDeleted($event)" (updated)="onModelUpdated($event)"
                       [namespacesInUse]="namespacesInUse"></model-view>
+          <div class="bottom-hack-border"></div>
+          <div class="bottom-hack-padding"></div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab id="docTab" [title]="'Datamodel documentation' | translate">
+        <ng-template ngbTabContent>
+          <model-documentation
+            id='modelDocumentation'
+            [parent]="editorContainer"
+            [model]="model"
+            (updated)="onModelUpdated($event)"></model-documentation>
           <div class="bottom-hack-border"></div>
           <div class="bottom-hack-padding"></div>
         </ng-template>

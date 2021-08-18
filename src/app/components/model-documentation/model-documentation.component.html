@@ -1,0 +1,49 @@
+<div>
+
+  <h2 class="pull-left">
+    {{ 'Datamodel documentation' | translate }}
+  </h2>
+
+  <div class="pull-left" *ngIf="!editing && fallbackModelLanguage !== modelLanguage">
+    ({{ fallbackModelLanguage }})
+  </div>
+
+  <div class="top-actions">
+    <button type="button"
+            class="btn btn-action pull-right edit"
+            (click)="edit()"
+            [disabled]="persisting"
+            *ngIf="canEdit && !editing">
+      <span translate>Edit</span>
+    </button>
+
+    <button type="button"
+            class="btn btn-link pull-right cancel"
+            (click)="cancel()"
+            [disabled]="persisting"
+            *ngIf="editing">
+      <span translate>Cancel</span>
+    </button>
+
+    <button type="button"
+            class="btn btn-action pull-right save"
+            (click)="save()"
+            [disabled]="persisting"
+            *ngIf="editing">
+      <span translate>Save</span>
+    </button>
+  </div>
+
+</div>
+
+<md-editor
+  *ngIf="modelInEdit"
+  name="Content"
+  [(ngModel)]="modelInEdit?.description[activeModelLanguage]"
+  [height]="'500px'"
+  [mode]="editorMode"
+  required
+  maxlength="2500">
+</md-editor>
+
+<br />

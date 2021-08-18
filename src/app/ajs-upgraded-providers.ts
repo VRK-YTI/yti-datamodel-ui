@@ -13,6 +13,7 @@ import { UserRoleService } from './services/userRoleService';
 import { ConfigService } from './services/configService';
 import IInjectorService = angular.auto.IInjectorService;
 import { LocationService } from './services/locationService';
+import { AuthorizationManagerService } from './services/authorizationManagerService';
 
 // NOTE: In normal case the "wrappers" should not be needed, but I could not figure out the way to make it work with the interfaces.
 
@@ -227,5 +228,20 @@ export function datamodelLocationServiceFactory(i: IInjectorService) {
 export const datamodelLocationServiceProvider = {
   provide: DatamodelLocationServiceWrapper,
   useFactory: datamodelLocationServiceFactory,
+  deps: ['$injector']
+};
+
+export class AuthorizationManagerServiceWrapper {
+  constructor(public authorizationManagerService: AuthorizationManagerService) {
+  }
+}
+
+export function authorizationManagerServiceFactory(i: IInjectorService) {
+  return new AuthorizationManagerServiceWrapper(i.get('authorizationManagerService'))
+}
+
+export const authorizationManagerServiceProvider = {
+  provide: AuthorizationManagerServiceWrapper,
+  useFactory: authorizationManagerServiceFactory,
   deps: ['$injector']
 };
