@@ -23,9 +23,10 @@ class SimpleColaLayout extends Layout {
     this.nodes(nodes);
     this.links(links);
 
-    this.avoidOverlaps(true);
+    // Due to performance issues, restrict the usage of avoidOverlaps and jaccardLinkLength peroperties
+    this.avoidOverlaps(nodes.length < 100);
     this.handleDisconnected(true);
-    this.jaccardLinkLengths(allNodes ? 30 : 300);
+    this.jaccardLinkLengths(allNodes || links.length > 200 ? 30 : 300);
     this.convergenceThreshold(0.005);
   }
 
@@ -104,6 +105,8 @@ export function layout(graph: joint.dia.Graph, onlyNodeIds: string[] = []): Prom
       fixed: (onlyNodeIdsSet.size > 0 && !onlyNodeIdsSet.has(element.id)) ? 1 : 0
     });
   });
+
+  console.info(nodes)
 
   for (const link of graph.getLinks()) {
     links.push({
