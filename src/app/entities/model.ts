@@ -82,7 +82,7 @@ export class Model extends AbstractModel {
 
   static modelMappings = {
     comment:            { name: 'comment',      serializer: localizableSerializer },
-    description:        { name: 'description',  serializer: localizableSerializer },
+    documentation:      { name: 'documentation', serializer: localizableSerializer },
     status:             { name: 'versionInfo',  serializer: identitySerializer<Status>() },
     vocabularies:       { name: 'references',   serializer: entityAwareList(entity(() => Vocabulary)) },
     importedNamespaces: { name: 'requires',     serializer: entityAwareList(entity(() => ImportedNamespace)) },
@@ -101,7 +101,7 @@ export class Model extends AbstractModel {
   };
 
   comment: Localizable;
-  description: Localizable;
+  documentation: Localizable;
   status: Status;
   vocabularies: Vocabulary[];
   importedNamespaces: ImportedNamespace[];
