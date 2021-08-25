@@ -142,9 +142,7 @@ const modelContext = Object.assign({}, coreContext, namespaceContext, referenceD
   useContext: { '@id': 'http://uri.suomi.fi/datamodel/ns/iow#useContext' },
   contact: {'@id': 'http://uri.suomi.fi/datamodel/ns/iow#contact', '@container': '@language'},
   wasRevisionOf : { '@id' : 'http://www.w3.org/ns/prov#wasRevisionOf',  '@type' : '@id' },
-
-  // TODO: can we find something more appropriate for "documentation"
-  description: { '@id': 'http://www.w3.org/ns/shacl#description', '@container': '@language' },
+  documentation: { '@id': 'http://uri.suomi.fi/datamodel/ns/iow#documentation', '@container': '@language' },
 });
 
 const usageContext = Object.assign({}, coreContext, modelContext, {

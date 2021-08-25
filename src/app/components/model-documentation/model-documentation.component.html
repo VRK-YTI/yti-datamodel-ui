@@ -39,7 +39,7 @@
 <md-editor
   *ngIf="modelInEdit"
   name="Content"
-  [(ngModel)]="modelInEdit?.description[activeModelLanguage]"
+  [(ngModel)]="modelInEdit?.documentation[activeModelLanguage]"
   [height]="'500px'"
   [mode]="editorMode"
   required

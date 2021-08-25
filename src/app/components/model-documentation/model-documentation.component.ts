@@ -89,8 +89,8 @@ export class ModelDocumentationComponent implements OnInit, OnDestroy, OnChanges
     // if current language has no content, for viewing prefer a
     // language that has content
     if (this.modelInEdit &&
-        (!this.modelInEdit.description[this.modelLanguage] ||
-        !this.modelInEdit.description[this.modelLanguage].length)) {
+        (!this.modelInEdit.documentation[this.modelLanguage] ||
+        !this.modelInEdit.documentation[this.modelLanguage].length)) {
       // take list of languages from model as potential fallbacks,
       // and sort them to prefer fi
       const fallbacks: Language[] =
