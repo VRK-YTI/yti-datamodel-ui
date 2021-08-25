@@ -106,8 +106,6 @@ export function layout(graph: joint.dia.Graph, onlyNodeIds: string[] = []): Prom
     });
   });
 
-  console.info(nodes)
-
   for (const link of graph.getLinks()) {
     links.push({
       source: requireDefined(nodes.get(link.attributes.source.id)),
