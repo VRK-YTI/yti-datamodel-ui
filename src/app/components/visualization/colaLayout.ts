@@ -23,7 +23,7 @@ class SimpleColaLayout extends Layout {
     this.nodes(nodes);
     this.links(links);
 
-    // Due to performance issues, restrict the usage of avoidOverlaps and jaccardLinkLength peroperties
+    // Due to performance issues, restrict the usage of avoidOverlaps and jaccardLinkLength properties
     this.avoidOverlaps(nodes.length < 100);
     this.handleDisconnected(true);
     this.jaccardLinkLengths(allNodes || links.length > 200 ? 30 : 300);
