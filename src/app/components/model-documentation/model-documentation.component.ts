@@ -10,6 +10,7 @@ import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { AuthorizationManagerService } from "app/services/authorizationManagerService";
 import { ErrorModalService } from "yti-common-ui/components/error-modal.component";
+import { MdEditorOption } from "ngx-markdown-editor";
 
 @Component({
   selector: 'model-documentation',
@@ -39,6 +40,10 @@ export class ModelDocumentationComponent implements OnInit, OnDestroy, OnChanges
   activeModelLanguage: Language;
   // selected model language, or a fallback language if there's no content
   fallbackModelLanguage: Language;
+
+  options: MdEditorOption = {
+    enablePreviewContentClick: true
+  };
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
@@ -145,6 +150,7 @@ export class ModelDocumentationComponent implements OnInit, OnDestroy, OnChanges
     this.editorMode = 'editor';
     this.editing = true;
     this.activeModelLanguage = this.modelLanguage;
+    this.setEnableContentClickOption();
   }
 
   cancel() {
@@ -154,6 +160,7 @@ export class ModelDocumentationComponent implements OnInit, OnDestroy, OnChanges
     this.editorMode = 'preview';
     this.editing = false;
     this.activeModelLanguage = this.fallbackModelLanguage;
+    this.setEnableContentClickOption();
   }
 
   async save() {
@@ -186,6 +193,7 @@ export class ModelDocumentationComponent implements OnInit, OnDestroy, OnChanges
     this.activeModelLanguage = this.fallbackModelLanguage;
     this.persisting = false;
     this.editing = false;
+    this.setEnableContentClickOption();
   }
 
   isEditing(): boolean {
@@ -201,5 +209,17 @@ export class ModelDocumentationComponent implements OnInit, OnDestroy, OnChanges
     this.editing = false;
     const editable = this.getEditable();
     this.select(!editable ? null : editable.unsaved ? null : editable);
+    this.setEnableContentClickOption();
+  }
+
+  setEnableContentClickOption(): void {
+    // During editing clicking links is disabled, 
+    // because by accidental click all changes in the editor are lost
+    if (this.editing) {
+      this.options.enablePreviewContentClick = false;
+    } else {
+      this.options.enablePreviewContentClick = true;
+    }
+    this.options = Object.assign({}, this.options);
   }
 }
