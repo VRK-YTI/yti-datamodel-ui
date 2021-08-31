@@ -35,7 +35,6 @@
               "src/styles/loading.scss",
               "src/styles/styles.scss",
               "node_modules/simple-line-icons/scss/simple-line-icons.scss",
-              "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/ngx-markdown-editor/assets/highlight.js/agate.min.css"
 
             ],
