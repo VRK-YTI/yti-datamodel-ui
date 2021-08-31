@@ -40,7 +40,7 @@
   *ngIf="modelInEdit"
   name="Content"
   [(ngModel)]="modelInEdit?.documentation[activeModelLanguage]"
-  [height]="'500px'"
+  [height]="editing ? '500px' : 'auto'"
   [mode]="editorMode"
   required
   maxlength="2500"
