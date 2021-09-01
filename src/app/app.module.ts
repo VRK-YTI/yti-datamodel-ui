@@ -296,8 +296,6 @@ mod.directive('appUserDetailsInformation', downgradeComponent({ component: UserD
 mod.directive('appUserDetailsSubscriptions', downgradeComponent({ component: UserDetailsSubscriptionsComponent }));
 mod.directive('appMassMigrateDatamodelResourceStatusesModalComponent', downgradeComponent({ component: MassMigrateDatamodelResourceStatusesModalComponent }));
 mod.directive('appNewDatamodelVersionModalComponent', downgradeComponent({ component: NewDatamodelVersionModalComponent }));
-// TODO: is this needed here?
-// mod.directive('appModelDocumentationComponent', downgradeComponent({ component: ModelDocumentationComponent }));
 
 mod.factory('translateService', downgradeInjectable(TranslateService));
 mod.factory('loginModal', downgradeInjectable(LoginModalService));
