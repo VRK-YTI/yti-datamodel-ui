@@ -3,7 +3,7 @@ import { translate } from 'app/utils/language';
 import { Localizable, Localizer as AngularLocalizer } from 'yti-common-ui/types/localization';
 import { SessionService } from './sessionService';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { gettextCatalog as GettextCatalog } from 'angular-gettext';
 
 type Localizer = AngularJSLocalizer;
@@ -14,6 +14,8 @@ export class LanguageService {
   private _modelLanguage: {[entityId: string]: Language} = {};
 
   language$: BehaviorSubject<UILanguage>;
+
+  modelLanguageChange$ = new Subject();
 
   constructor(private gettextCatalog: GettextCatalog /* AngularJS */,
               private translateService: TranslateService /* Angular */,
@@ -65,6 +67,7 @@ export class LanguageService {
   setModelLanguage(context: LanguageContext, language: Language) {
     this._modelLanguage[context.id.uri] = language;
     this.sessionService.modelLanguage = this._modelLanguage;
+    this.modelLanguageChange$.next(true);
   }
 
   translate(data: Localizable, context?: LanguageContext): string {
@@ -72,7 +75,7 @@ export class LanguageService {
   }
 
   translateToGivenLanguage(localizable: Localizable, languageToUse: string|null): string {
-    
+
     if (!localizable || !languageToUse) {
       return '';
     }
@@ -145,7 +148,7 @@ export class DefaultAngularLocalizer implements AngularLocalizer {
     return this.languageService.translate(localizable);
   }
 
-  translateToGivenLanguage(localizable: Localizable, languageToUse: string|null): string {    
+  translateToGivenLanguage(localizable: Localizable, languageToUse: string|null): string {
     return this.languageService.translateToGivenLanguage(localizable, languageToUse);
   }
 }

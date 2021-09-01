@@ -64,6 +64,20 @@ msgstr ""
 msgid "Use context"
 msgstr ""
 
+msgid ""
+"No resources were found with the starting status. No changes to resources "
+"statuses."
+msgstr ""
+
+msgid "Status changed to one resource."
+msgstr ""
+
+msgid "Status changed to "
+msgstr ""
+
+msgid " resources."
+msgstr ""
+
 msgid "Classifications"
 msgstr ""
 
@@ -83,20 +97,6 @@ msgid "Links"
 msgstr ""
 
 msgid "Add link"
-msgstr ""
-
-msgid "Status changed to one resource."
-msgstr ""
-
-msgid "Status changed to "
-msgstr ""
-
-msgid " resources."
-msgstr ""
-
-msgid ""
-"No resources were found with the starting status. No changes to resources "
-"statuses."
 msgstr ""
 
 msgid "New version of datamodel is created"
@@ -484,6 +484,9 @@ msgstr ""
 msgid "Datamodel details"
 msgstr ""
 
+msgid "Datamodel documentation"
+msgstr ""
+
 msgid "Information domain"
 msgstr ""
 
@@ -612,10 +615,10 @@ msgstr ""
 msgid "SUBSCRIPTIONS"
 msgstr ""
 
-msgid "xsd:long error"
+msgid "xsd:string"
 msgstr ""
 
-msgid "xsd:string"
+msgid "xsd:string error"
 msgstr ""
 
 msgid "rdfs:Literal"
@@ -669,7 +672,7 @@ msgstr ""
 msgid "xsd:long"
 msgstr ""
 
-msgid "xsd:string error"
+msgid "xsd:long error"
 msgstr ""
 
 msgid "xsd:int"
@@ -726,7 +729,7 @@ msgstr ""
 msgid "xsd:base64Binary error"
 msgstr ""
 
-msgid "Guide through specializing a class"
+msgid "Add class description"
 msgstr ""
 
 msgid "Add classification info"
@@ -900,7 +903,7 @@ msgstr ""
 msgid "Guide through requiring a namespace"
 msgstr ""
 
-msgid "Add class description"
+msgid "Guide through specializing a class"
 msgstr ""
 
 msgid "Imported namespaces are here"
@@ -1089,10 +1092,10 @@ msgstr ""
 msgid "You can add new attribute or association to the Class from here"
 msgstr ""
 
-msgid "Copy shape"
+msgid "not found in the concept database"
 msgstr ""
 
-msgid "not found in the concept database"
+msgid "Define concept for the class"
 msgstr ""
 
 msgid "Define concept for the new class"
@@ -1571,7 +1574,7 @@ msgstr ""
 msgid "Specialize class"
 msgstr ""
 
-msgid "Define concept for the class"
+msgid "Copy shape"
 msgstr ""
 
 msgid "Can be selected only from this library"
@@ -1957,7 +1960,7 @@ msgstr ""
 msgid "CREATING_NEW_MODEL_VERSION_MESSAGE"
 msgstr ""
 
-msgid "Example info"
+msgid "Definition info"
 msgstr ""
 
 msgid "Editorial note"
@@ -2179,7 +2182,7 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-msgid "Definition info"
+msgid "Example info"
 msgstr ""
 
 msgid "Value class"

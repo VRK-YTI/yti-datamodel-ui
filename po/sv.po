@@ -523,6 +523,9 @@ msgstr "Datadefinitioner"
 msgid "Datamodel details"
 msgstr "Uppgifter om informationsmodellen"
 
+msgid "Datamodel documentation"
+msgstr "Dokumentation om informationsmodellen"
+
 msgid "Information domain"
 msgstr "Informationsområde"
 

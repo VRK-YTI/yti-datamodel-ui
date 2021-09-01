@@ -59,7 +59,8 @@ import {
   scopeProvider,
   showClassInfoModalProvider,
   showPredicateInfoModalProvider,
-  userRoleServiceProvider
+  userRoleServiceProvider,
+  authorizationManagerServiceProvider,
 } from './ajs-upgraded-providers';
 import {
   ExportDirective,
@@ -91,6 +92,8 @@ import { DatamodelConfirmationModalService } from './services/confirmation-modal
 import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
 import { NewDatamodelVersionModalComponent } from './components/model/new-datamodel-version-modal.component';
 import { NewDatamodelVersionModalService } from './components/model/new-datamodel-version-modal.component';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { ModelDocumentationComponent } from './components/model-documentation/model-documentation.component';
 
 require('angular-gettext');
 require('checklist-model');
@@ -165,6 +168,7 @@ export function localizerFactory(languageService: LanguageService): AngularLocal
       missingTranslationHandler: { provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler }
     }),
     NgbModule.forRoot(),
+    LMarkdownEditorModule // markdown editor for use by ModelDocumentationComponent
   ],
   declarations: [
     UseContextDropdownComponent,
@@ -184,7 +188,8 @@ export function localizerFactory(languageService: LanguageService): AngularLocal
     UserDetailsInformationComponent,
     UserDetailsSubscriptionsComponent,
     MassMigrateDatamodelResourceStatusesModalComponent,
-    NewDatamodelVersionModalComponent
+    NewDatamodelVersionModalComponent,
+    ModelDocumentationComponent
   ],
   entryComponents: [
     FooterComponent,
@@ -204,7 +209,8 @@ export function localizerFactory(languageService: LanguageService): AngularLocal
     UserDetailsInformationComponent,
     UserDetailsSubscriptionsComponent,
     MassMigrateDatamodelResourceStatusesModalComponent,
-    NewDatamodelVersionModalComponent
+    NewDatamodelVersionModalComponent,
+    ModelDocumentationComponent
   ],
   providers: [
     { provide: AUTHENTICATED_USER_ENDPOINT, useFactory: resolveAuthenticatedUserEndpoint },
@@ -225,6 +231,7 @@ export function localizerFactory(languageService: LanguageService): AngularLocal
     userRoleServiceProvider,
     configServiceProvider,
     datamodelLocationServiceProvider,
+    authorizationManagerServiceProvider,
     Title,
     HelpService,
     IndexSearchService,

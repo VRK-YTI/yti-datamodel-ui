@@ -30,6 +30,7 @@ import { componentDeclaration } from 'app/utils/angular';
 import { module as mod } from './module';
 import { downgradeComponent } from '@angular/upgrade/static';
 import { ModelMainComponent } from './modelMain';
+import { ModelDocumentationComponent } from '../model-documentation/model-documentation.component';
 export { module } from './module';
 
 mod.component('editableRootClass', componentDeclaration(EditableRootClassComponent));
