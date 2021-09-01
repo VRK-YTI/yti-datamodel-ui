@@ -96,7 +96,8 @@ export class Model extends AbstractModel {
     createdAt:          { name: 'created',      serializer: optional(dateSerializer) },
     useContext:         { name: 'useContext',   serializer: valueOrDefault(identitySerializer<UseContext>(), 'InformationDescription') },
     contact:            { name: 'contact',      serializer: localizableSerializer },
-    previousModel:      { name: 'wasRevisionOf',   serializer: entityAwareOptional(uriSerializer) }
+    previousModel:      { name: 'wasRevisionOf',   serializer: entityAwareOptional(uriSerializer) },
+    documentation:      { name: 'documentation', serializer: localizableSerializer },
   };
 
   comment: Localizable;
@@ -116,6 +117,7 @@ export class Model extends AbstractModel {
   useContext: UseContext;
   contact: Localizable;
   previousModel: Uri|null;
+  documentation: Localizable;
 
   constructor(graph: any, context: any, frame: any) {
     super(graph, context, frame);

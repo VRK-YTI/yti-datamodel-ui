@@ -519,6 +519,9 @@ msgstr "Tietomääritykset"
 msgid "Datamodel details"
 msgstr "Tietomallin tiedot"
 
+msgid "Datamodel documentation"
+msgstr "Dokumentaatio"
+
 msgid "Information domain"
 msgstr "Tietoalue"
 
