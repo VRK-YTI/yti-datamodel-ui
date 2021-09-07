@@ -42,7 +42,10 @@ export class ModelDocumentationComponent implements OnInit, OnDestroy, OnChanges
   fallbackModelLanguage: Language;
 
   options: MdEditorOption = {
-    enablePreviewContentClick: true
+    enablePreviewContentClick: true,
+    markedjsOpt: {
+      breaks: true
+    }
   };
 
   destroy$: Subject<boolean> = new Subject<boolean>();
