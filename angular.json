@@ -29,8 +29,7 @@
                 "glob": "**/*",
                 "input": "node_modules/ace-builds/src-min",
                 "output": "/assets/ace-builds/"
-              },
-              "src/version.json"
+              }
             ],
             "styles": [
               "src/styles/loading.scss",
