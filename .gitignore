@@ -18,5 +18,3 @@ dist
 .idea/shelf/
 **/idea/shelf/
 yti-datamodel-ui.iml
-
-src/version.json

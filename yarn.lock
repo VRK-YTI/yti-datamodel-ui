@@ -2888,11 +2888,6 @@ gettext-parser@1.2.2:
   dependencies:
     encoding "0.1.12"
 
-git-repo-info@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/git-repo-info/-/git-repo-info-2.1.1.tgz#220ffed8cbae74ef8a80e3052f2ccb5179aed058"
-  integrity sha512-8aCohiDo4jwjOwma4FmYFd3i97urZulL8XL24nIPxuE+GZnfsAyy/g2Shqx6OjUiFKUXZM+Yy+KHnOmmA3FVcg==
-
 glob-base@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/glob-base/-/glob-base-0.3.0.tgz#dbb164f6221b1c0b1ccf82aea328b497df0ea3c4"
@@ -7262,9 +7257,9 @@ yn@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
 
-"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#91705c04dff3132ba4372994d9f1237d3b25678d":
+"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#45e7b2d5ecbf0c29baa1e6609762252603b5fbcd":
   version "0.0.0"
-  resolved "https://github.com/VRK-YTI/yti-common-ui.git/#91705c04dff3132ba4372994d9f1237d3b25678d"
+  resolved "https://github.com/VRK-YTI/yti-common-ui.git/#45e7b2d5ecbf0c29baa1e6609762252603b5fbcd"
 
 zone.js@~0.8.26:
   version "0.8.29"
