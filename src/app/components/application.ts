@@ -7,6 +7,8 @@ import { LocationService } from 'app/services/locationService';
 import { ConfigService } from 'app/services/configService';
 import { Subscription } from 'rxjs';
 
+const versionInfo = require('../../version.json')
+
 @LegacyComponent({
   template: require('./application.html'),
 })
@@ -14,6 +16,7 @@ export class ApplicationComponent {
 
   applicationInitialized: boolean;
   showFooter: boolean;
+  version: string;
 
   private subscriptions: Subscription[] = [];
 
@@ -28,6 +31,8 @@ export class ApplicationComponent {
     'ngInject';
 
     this.subscriptions.push(userService.user$.subscribe(() => this.applicationInitialized = true));
+    
+    this.version = JSON.stringify(versionInfo);
 
     $scope.$watch(() => $location.path(), path => {
       this.showFooter = !path.startsWith('/model');
