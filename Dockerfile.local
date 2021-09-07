@@ -49,6 +49,8 @@ RUN ["cp", "-a", "/tmp/node_modules", "/app/"]
 
 # Build the dist dir containing the static files
 WORKDIR /app
+# Generate version.json file
+RUN ["npm", "run", "generate-version"]
 RUN ["npm", "run", "build", "--", "--prod",  "--output-hashing=all"]
 
 # Start web server and expose http

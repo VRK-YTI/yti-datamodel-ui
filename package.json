@@ -12,7 +12,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "create-translations": "node -- node_modules/@biesbjerg/ngx-translate-extract/bin/cli.js --input ./src/app --output ./po/template.pot --format=pot --clean",
-    "load-examples": "npm run ts-node -- scripts/load-examples.ts"
+    "load-examples": "npm run ts-node -- scripts/load-examples.ts",
+    "generate-version": "npm run ts-node -- scripts/generate-version.ts"
   },
   "private": true,
   "dependencies": {
@@ -62,7 +63,7 @@
     "uri-js": "4.2.2",
     "uuid": "3.0.1",
     "webcola": "3.3.8",
-    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#45e7b2d5ecbf0c29baa1e6609762252603b5fbcd",
+    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#91705c04dff3132ba4372994d9f1237d3b25678d",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -93,6 +94,7 @@
     "@types/uuid": "2.0.29",
     "@types/webpack-env": "^1.13.6",
     "codelyzer": "~4.2.1",
+    "git-repo-info": "^2.1.1",
     "http-status-to-description": "0.0.1",
     "imports-loader": "0.6.5",
     "jasmine-core": "~2.99.1",
