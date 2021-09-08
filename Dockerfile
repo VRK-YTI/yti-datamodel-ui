@@ -11,9 +11,6 @@ ADD . /tmp
 WORKDIR /tmp
 RUN echo "$NPMRC" > .npmrc && yarn install && rm -f .npmrc
 
-# Generate version.json file
-RUN ["npm", "run", "generate-version", "--", "$BRANCH"]
-
 # Build the dist dir containing the static files
 RUN ["npm", "run", "build", "--", "--prod",  "--output-hashing=all"]
 

@@ -7,7 +7,7 @@ import { LocationService } from 'app/services/locationService';
 import { ConfigService } from 'app/services/configService';
 import { Subscription } from 'rxjs';
 
-const versionInfo = require('../../version.json')
+const versionInfo = require('!raw-loader!../../version.txt')
 
 @LegacyComponent({
   template: require('./application.html'),
@@ -32,7 +32,7 @@ export class ApplicationComponent {
 
     this.subscriptions.push(userService.user$.subscribe(() => this.applicationInitialized = true));
     
-    this.version = JSON.stringify(versionInfo);
+    this.version = versionInfo;
 
     $scope.$watch(() => $location.path(), path => {
       this.showFooter = !path.startsWith('/model');

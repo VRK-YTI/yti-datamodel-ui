@@ -30,7 +30,7 @@
                 "input": "node_modules/ace-builds/src-min",
                 "output": "/assets/ace-builds/"
               },
-              "src/version.json"
+              "src/version.txt"
             ],
             "styles": [
               "src/styles/loading.scss",
