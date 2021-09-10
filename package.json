@@ -12,8 +12,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "create-translations": "node -- node_modules/@biesbjerg/ngx-translate-extract/bin/cli.js --input ./src/app --output ./po/template.pot --format=pot --clean",
-    "load-examples": "npm run ts-node -- scripts/load-examples.ts",
-    "generate-version": "npm run ts-node -- scripts/generate-version.ts"
+    "load-examples": "npm run ts-node -- scripts/load-examples.ts"
   },
   "private": true,
   "dependencies": {
@@ -94,7 +93,6 @@
     "@types/uuid": "2.0.29",
     "@types/webpack-env": "^1.13.6",
     "codelyzer": "~4.2.1",
-    "git-repo-info": "^2.1.1",
     "http-status-to-description": "0.0.1",
     "imports-loader": "0.6.5",
     "jasmine-core": "~2.99.1",
