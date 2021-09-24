@@ -14,6 +14,25 @@ export class FrameService {
   }
 
   private frameData(data: GraphData, frame: any): IPromise<GraphData> {
+    
+    // For some reason iow:vertexXY is returned as array of objects instead of array of strings
+    if (data["@graph"]) {
+
+      const graphElements = data["@graph"].map((elem: any) => {
+        if (!elem["iow:vertexXY"]) {
+          return elem;
+        }
+
+        if (Array.isArray(elem["iow:vertexXY"])) {
+          const vtx = { "@list": elem["iow:vertexXY"].map((x: any) => x["@list"][0])};
+          elem = Object.assign({}, ...elem, { "iow:vertexXY": vtx });
+        }
+        return elem;
+      })
+
+      data["@graph"] = graphElements;
+    }
+
     return jsonld.promises.frame(data, frame)
       .then((framed: GraphData) => framed, (err: any) => {
         console.log('Error: ' + err.message);
