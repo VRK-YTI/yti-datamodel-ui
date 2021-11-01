@@ -4,9 +4,10 @@
     <breadcrumb></breadcrumb>
     <div ng-view></div>
   </div>
-  
+
   <app-footer [title]="'Data Vocabularies' | translate"
               [show-license-icon]="true"
+              [version]="$ctrl.version"
               (information-click)="$ctrl.navigateToInformation()"
               ng-if="$ctrl.showFooter"></app-footer>
 </ng-container>

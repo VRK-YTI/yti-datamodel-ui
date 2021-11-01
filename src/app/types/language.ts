@@ -1,7 +1,7 @@
 import { Uri } from 'app/entities/uri';
 import { Localizable } from 'yti-common-ui/types/localization';
 
-// language codes according to ISO_639-1 specification
+// language codes according to ISO_639-1 specification (also added some from ISO_639-2)
 export type Language =
     'ab' | 'aa' | 'af' | 'ak' | 'sq' | 'am' | 'ar' | 'an' | 'hy' | 'as' | 'av' | 'ae' | 'ay'
   | 'az' | 'bm' | 'ba' | 'eu' | 'be' | 'bn' | 'bh' | 'bi' | 'bs' | 'br' | 'bg' | 'my' | 'ca'
@@ -16,7 +16,8 @@ export type Language =
   | 'rm' | 'rn' | 'ro' | 'ru' | 'sa' | 'sc' | 'sd' | 'se' | 'sm' | 'sg' | 'sr' | 'gd' | 'sn'
   | 'si' | 'sk' | 'sl' | 'st' | 'es' | 'su' | 'sw' | 'ss' | 'sv' | 'ta' | 'tg' | 'th' | 'ti'
   | 'bo' | 'tk' | 'tl' | 'tn' | 'to' | 'tr' | 'ts' | 'tt' | 'tw' | 'ty' | 'ug' | 'uk' | 'ur'
-  | 'uz' | 've' | 'vi' | 'vo' | 'wa' | 'cy' | 'wo' | 'fy' | 'xh' | 'yi' | 'yo' | 'za' | 'zu';
+  | 'uz' | 've' | 'vi' | 'vo' | 'wa' | 'cy' | 'wo' | 'fy' | 'xh' | 'yi' | 'yo' | 'za' | 'zu'
+  | 'prs' | 'smn' | 'sms';
 
 export const availableLanguages: Language[] = [
     'ab', 'aa', 'af', 'ak', 'sq', 'am', 'ar', 'an', 'hy', 'as', 'av', 'ae', 'ay',
@@ -32,7 +33,8 @@ export const availableLanguages: Language[] = [
     'rm', 'rn', 'ro', 'ru', 'sa', 'sc', 'sd', 'se', 'sm', 'sg', 'sr', 'gd', 'sn',
     'si', 'sk', 'sl', 'st', 'es', 'su', 'sw', 'ss', 'sv', 'ta', 'tg', 'th', 'ti',
     'bo', 'tk', 'tl', 'tn', 'to', 'tr', 'ts', 'tt', 'tw', 'ty', 'ug', 'uk', 'ur',
-    'uz', 've', 'vi', 'vo', 'wa', 'cy', 'wo', 'fy', 'xh', 'yi', 'yo', 'za', 'zu'
+    'uz', 've', 'vi', 'vo', 'wa', 'cy', 'wo', 'fy', 'xh', 'yi', 'yo', 'za', 'zu', 
+    'prs', 'smn', 'sms'
 ];
 
 export type UILanguage = 'fi' | 'en' | 'sv';
