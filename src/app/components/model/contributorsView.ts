@@ -81,7 +81,12 @@ class ContributorsTableDescriptor extends TableDescriptor<Organization> {
 
   columnDescriptors(): ColumnDescriptor<Organization>[] {
     return [
-      { headerName: 'Name', nameExtractor: c => this.languageService.translate(c.label, this.context) }
+      { headerName: 'Name', nameExtractor: (c, isEditing) => {
+          // show main organization's name in view mode
+          let label = c.parentOrg && !isEditing ? c.parentOrg.label : c.label;
+          return this.languageService.translate(label, this.context)
+        }
+      }
     ];
   }
 
