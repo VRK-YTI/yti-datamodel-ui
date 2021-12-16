@@ -37,7 +37,7 @@
           <span class="inRowTitle"><span translate>Organization</span>:</span>
           <ul class="organizations dot-separated-list">
             <li class="organization" *ngFor="let contributor of model!.contributors">
-              {{contributor.label | translateValue:true}}
+              {{(contributor.parentOrg ? contributor.parentOrg.label : contributor.label) | translateValue:true}}
             </li>
           </ul>
         </div>

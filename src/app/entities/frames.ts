@@ -176,22 +176,18 @@ export function modelFrame(data: any, options: { id?: Uri|Urn, prefix?: string }
         '@default': [],
         '@embed': '@always'
       }
+    },
+    contributor: {
+      '@omitDefault': true,
+      '@default': [],
+      parentOrganization: {
+        '@omitDefault': true,
+        '@default': [],
+        '@embed': '@always'
+      }
     }
   };
 
-  if (!options.id && !options.prefix) {
-    Object.assign(frameObj, {
-      contributor: {
-        '@omitDefault': true,
-        '@default': [],
-        parentOrganization: {
-          '@omitDefault': true,
-          '@default': [],
-          '@embed': '@always'
-        }
-      }
-    });
-  }
 
   if (options.id) {
     Object.assign(frameObj, { 'dcterms:identifier': options.id.toString() });

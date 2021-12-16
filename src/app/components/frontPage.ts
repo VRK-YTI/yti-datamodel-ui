@@ -289,7 +289,7 @@ export class FrontPageComponent implements HelpProvider {
         this.filteredModels.map(filteredModel => filteredModel.isPartOf.sort(comparingLocalizable<string>(localizer, id => this.informationDomainLabel(id))));
         this.filteredModels.map(filteredModel => {
 
-          // remove child organizations from contributors (show only main parganization)
+          // remove child organization and add parent if not already exist
           const parentIds: string[] = [];
           filteredModel.contributor.forEach((contributor, index) => {
             const org = this.organizationMap['urn:uuid:' + contributor];
