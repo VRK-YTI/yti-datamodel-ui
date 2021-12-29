@@ -33,7 +33,7 @@ export abstract class TableDescriptor<T> {
 
 export interface ColumnDescriptor<T> {
   headerName: string;
-  nameExtractor: (value: T) => string;
+  nameExtractor: (value: T, isEditing: boolean) => string;
   hrefExtractor?: (value: T) => Url;
   onClick?: (value: T) => any;
   cssClass?: string;
@@ -67,7 +67,7 @@ const nonExpandedLimit = 2;
               ng-init="valueIndex = $index"
               drag-sortable-item>
             <td ng-class="property.cssClass" ng-repeat="property in $ctrl.properties">
-              <span ng-if="!property.hrefExtractor && !property.onClick">{{property.nameExtractor(value)}}</span>
+              <span ng-if="!property.hrefExtractor && !property.onClick">{{property.nameExtractor(value, $ctrl.isEditing())}}</span>
               <a id="{{$ctrl.id + '_' + property.hrefExtractor(value) + '_href_editable_link'}}"
                  ng-if="property.hrefExtractor"
                  target="_blank"
