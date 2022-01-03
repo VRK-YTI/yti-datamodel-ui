@@ -197,7 +197,11 @@ export function modelFrame(data: any, options: { id?: Uri|Urn, prefix?: string }
   }
 
   if (options.id) {
-    Object.assign(frameObj, { 'dcterms:identifier': options.id.toString() });
+    const id = options.id.toString();
+    const provEntity = data['@graph'].find((d:any) => id === d.identifier);
+    if (provEntity) {
+      Object.assign(frameObj, { '@id': provEntity['@id'] });
+    }
   } else if (options.prefix) {
     Object.assign(frameObj, { preferredXMLNamespacePrefix: options.prefix });
   }
