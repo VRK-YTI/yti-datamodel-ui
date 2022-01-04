@@ -104,6 +104,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "ng-annotate-patched": "^1.7.0",
     "ngx-clipboard": "^11.1.9",
+    "node-sass": "^4.14.0",
     "po-loader": "0.3.1",
     "po2json": "0.4.5",
     "protractor": "~5.4.0",
@@ -116,5 +117,8 @@
     "**/angular": "1.7.3",
     "**/@types/node": "~8.9.4",
     "**/@types/angular": "1.6.50"
+  },
+  "engines": {
+    "node": ">=14.18.1 <15.0.0"
   }
 }
