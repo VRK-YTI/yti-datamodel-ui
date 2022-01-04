@@ -179,25 +179,31 @@ export function modelFrame(data: any, options: { id?: Uri|Urn, prefix?: string }
     }
   };
 
-  const org = data['@graph'].find((o:any) => o['@type'] === 'foaf:Organization');
+  if (Array.isArray(data['@graph'])) {
+    const org = data['@graph'].find((o:any) => o['@type'] === 'foaf:Organization');
 
-  // For old data parentOrganization is undefined. Need to check for framing if present
-  if (org && typeof org.parentOrganization !== 'undefined') {
-    Object.assign(frameObj, {
-      contributor: {
-        '@omitDefault': true,
-        '@default': [],
-        parentOrganization: {
+    // For old data parentOrganization is undefined. Need to check for framing if present
+    if (org && typeof org.parentOrganization !== 'undefined') {
+      Object.assign(frameObj, {
+        contributor: {
           '@omitDefault': true,
           '@default': [],
-          '@embed': '@always'
+          parentOrganization: {
+            '@omitDefault': true,
+            '@default': [],
+            '@embed': '@always'
+          }
         }
-      }
-    });
+      });
+    }
   }
 
   if (options.id) {
-    Object.assign(frameObj, { 'dcterms:identifier': options.id.toString() });
+    const id = options.id.toString();
+    const provEntity = data['@graph'].find((d:any) => id === d.identifier);
+    if (provEntity) {
+      Object.assign(frameObj, { '@id': provEntity['@id'] });
+    }
   } else if (options.prefix) {
     Object.assign(frameObj, { preferredXMLNamespacePrefix: options.prefix });
   }
