@@ -145,6 +145,14 @@ export class NewModelPageComponent {
         this.referenceDatas.forEach(r => model.addReferenceData(r));
         this.importedNamespaces.forEach(ns => model.addImportedNamespace(ns));
         this.links.forEach(l => model.addLink(l));
+
+        // remove parent organization from the list as it is already included in child organization
+        // TODO: can this be accomplished by framing?
+        const parentOrganizationContributors = model.contributors
+          .filter(contributor => !this.contributors.map(selectedContributor => selectedContributor.id.uuid).includes(contributor.id.uuid));
+
+        parentOrganizationContributors.forEach(parentContributor => model.removeContributor(parentContributor));
+
         this.modelService.createModel(model).then(() => {
           this.$location.url(model.iowUrl());
         }, () => this.persisting = false);

@@ -81,7 +81,15 @@ export class AuthorizationManagerService {
       return true;
     }
 
-    return this.user.isInRole(['ADMIN', 'DATA_MODEL_EDITOR'], model.contributors.map(org => org.id.uuid));
+    const organizationIds = model.contributors.reduce((result: string[], org: Organization) => {
+      if (org.parentOrg) {
+        result.push(org.parentOrg.id.uuid);
+      }
+      result.push(org.id.uuid);
+      return result;
+    }, []);
+
+    return this.user.isInRole(['ADMIN', 'DATA_MODEL_EDITOR'], organizationIds);
   }
 
   canAddModel() {

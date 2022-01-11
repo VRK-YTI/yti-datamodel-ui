@@ -7,7 +7,6 @@ import { LanguageContext } from 'app/types/language';
 import { Organization } from 'app/entities/organization';
 import { SearchOrganizationModal } from './searchOrganizationModal';
 import { LegacyComponent, modalCancelHandler } from 'app/utils/angular';
-import { createExistsExclusion } from 'app/utils/exclusion';
 
 interface WithContributors {
   contributors: Organization[];
@@ -62,8 +61,25 @@ export class ContributorsViewComponent {
 
   addContributor() {
 
-    const organizationIds = collectProperties(this.value.contributors, c => c.id.uri);
-    const exclude = createExistsExclusion(organizationIds);
+    const organizationIds = this.value.contributors.reduce((result: Set<string>, org: Organization) => {
+      if (org.parentOrg) {
+        result.add(org.parentOrg.id.uri)
+      }
+      result.add(org.id.uri)
+      return result;
+    }, new Set<string>());
+
+    // Do not allow to add both child and parent organization as a contributor
+    const exclude = (organization: Organization) => {
+      if (organizationIds.has(organization.id.toString())) {
+        return 'Already added';
+      } else if (organization.parentOrg) {
+        if (organizationIds.has(organization.parentOrg.id.toString())) {
+          return 'Already added';
+        }
+      }
+      return null;
+    };
 
     this.searchOrganizationModal.open(exclude)
       .then((organization: Organization) => {
@@ -81,7 +97,16 @@ class ContributorsTableDescriptor extends TableDescriptor<Organization> {
 
   columnDescriptors(): ColumnDescriptor<Organization>[] {
     return [
-      { headerName: 'Name', nameExtractor: c => this.languageService.translate(c.label, this.context) }
+      { headerName: 'Name', nameExtractor: (c, isEditing) => {
+          // show main organization's name in view mode
+          let label = c.parentOrg && !isEditing ? c.parentOrg.label : c.label;
+
+          // in editing mode show both child and parent organization
+          const parentOrgName = c.parentOrg && isEditing ? ` (${this.languageService.translate(c.parentOrg.label, this.context)})` : '';
+
+          return this.languageService.translate(label, this.context) + parentOrgName
+        }
+      }
     ];
   }
 

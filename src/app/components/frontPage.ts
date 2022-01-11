@@ -151,9 +151,10 @@ export class FrontPageComponent implements HelpProvider {
         return {
           value: org,
           name: () => org ? this.languageService.translate(org.label) : this.gettextCatalog.getString('All organizations'),
-          idIdentifier: () => org ? labelNameToResourceIdIdentifier(this.languageService.translate(org.label)) : 'all_selected'
+          idIdentifier: () => org ? labelNameToResourceIdIdentifier(this.languageService.translate(org.label)) : 'all_selected',
+          parentOrg: org && org.parentOrg ? org.parentOrg : undefined
         }
-      });
+      }).filter(org => org.parentOrg === undefined);
       this.organizations.sort(comparingLocalizable<Option<Organization>>(localizer, c =>
         c.value ? c.value.label : {}));
       organizations.map(org => this.organizationMap[org.id.toString()] = org);
@@ -286,6 +287,20 @@ export class FrontPageComponent implements HelpProvider {
         this.filteredModels = ignoringInformationDomain.filter(model => informationDomainMatches(informationDomain, model));
         this.filteredModels.sort(comparingLocalizable<IndexModel>(localizer, m => m.label));
         this.filteredModels.map(filteredModel => filteredModel.isPartOf.sort(comparingLocalizable<string>(localizer, id => this.informationDomainLabel(id))));
+        this.filteredModels.map(filteredModel => {
+
+          // remove child organization and add parent if not already exist
+          const parentIds: string[] = [];
+          filteredModel.contributor.forEach((contributor, index) => {
+            const org = this.organizationMap['urn:uuid:' + contributor];
+            if (org && org.parentOrg) {
+              filteredModel.contributor.splice(index, 1);
+              parentIds.push(org.parentOrg.id.uuid)
+            }
+          });
+
+          filteredModel.contributor.push(...parentIds);
+        })
 
         this.filteredDeepHits = {};
         if (modelResult.deepHits && Object.keys(modelResult.deepHits).length > 0) {

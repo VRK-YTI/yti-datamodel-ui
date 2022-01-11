@@ -43,7 +43,8 @@ const classificationContext = Object.assign({}, coreContext, {
 });
 
 const organizationContext = Object.assign({}, coreContext, {
-  description
+  description,
+  parentOrganization: { '@id': 'http://uri.suomi.fi/datamodel/ns/iow#parentOrganization', '@type': '@id' }
 });
 
 const referenceDataServerContext = Object.assign({}, coreContext, {
@@ -143,6 +144,7 @@ const modelContext = Object.assign({}, coreContext, namespaceContext, referenceD
   contact: {'@id': 'http://uri.suomi.fi/datamodel/ns/iow#contact', '@container': '@language'},
   wasRevisionOf : { '@id' : 'http://www.w3.org/ns/prov#wasRevisionOf',  '@type' : '@id' },
   documentation: { '@id': 'http://uri.suomi.fi/datamodel/ns/iow#documentation', '@container': '@language' },
+  parentOrganization: { '@id': 'http://uri.suomi.fi/datamodel/ns/iow#parentOrganization', '@type' : '@id' }
 });
 
 const usageContext = Object.assign({}, coreContext, modelContext, {
@@ -177,9 +179,31 @@ export function modelFrame(data: any, options: { id?: Uri|Urn, prefix?: string }
     }
   };
 
+  if (Array.isArray(data['@graph'])) {
+    const org = data['@graph'].find((o:any) => o['@type'] === 'foaf:Organization');
+
+    // For old data parentOrganization is undefined. Need to check for framing if present
+    if (org && typeof org.parentOrganization !== 'undefined') {
+      Object.assign(frameObj, {
+        contributor: {
+          '@omitDefault': true,
+          '@default': [],
+          parentOrganization: {
+            '@omitDefault': true,
+            '@default': [],
+            '@embed': '@always'
+          }
+        }
+      });
+    }
+  }
 
   if (options.id) {
-    Object.assign(frameObj, { 'dcterms:identifier': options.id.toString() });
+    const id = options.id.toString();
+    const provEntity = data['@graph'].find((d:any) => id === d.identifier);
+    if (provEntity) {
+      Object.assign(frameObj, { '@id': provEntity['@id'] });
+    }
   } else if (options.prefix) {
     Object.assign(frameObj, { preferredXMLNamespacePrefix: options.prefix });
   }
@@ -329,7 +353,12 @@ export function classificationListFrame(data: any) {
 
 export function organizationFrame(data: any) {
   return frame(data, organizationContext, {
-    '@type': 'foaf:Organization'
+    '@type': 'foaf:Organization',
+    parentOrganization: {
+      '@omitDefault': true,
+      '@default': [],
+      '@embed': '@once'
+    }
   });
 }
 
