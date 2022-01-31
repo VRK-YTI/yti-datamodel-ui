@@ -37,15 +37,15 @@ export class ReferenceDataService {
     return this.getReferenceDataServers().then(servers => this.getReferenceDatasForServers(servers));
   }
 
-  getReferenceDataCodes(referenceData: ReferenceData|ReferenceData[]): IPromise<ReferenceDataCode[]> {
+  getReferenceDataCodes(referenceData: ReferenceData|ReferenceData[], force: boolean = false): IPromise<ReferenceDataCode[]> {
 
     const getSingle = (rd: ReferenceData) => {
       const cached = this.referenceDataCodesCache.get(rd.id.uri);
 
-      if (cached) {
+      if (cached && !force) {
         return cached;
       } else {
-        const result = this.$http.get<GraphData>(apiEndpointWithName('codeValues'), {params: {uri: rd.id.uri}})
+        const result = this.$http.get<GraphData>(apiEndpointWithName('codeValues'), {params: {uri: rd.id.uri, force}})
           .then(response => this.deserializeReferenceDataCodes(response.data!));
 
         this.referenceDataCodesCache.set(rd.id.uri, result);
