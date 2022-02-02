@@ -134,6 +134,9 @@ msgstr ""
 msgid "Reference data information"
 msgstr ""
 
+msgid "Update codes"
+msgstr ""
+
 msgid "Terminologies"
 msgstr ""
 

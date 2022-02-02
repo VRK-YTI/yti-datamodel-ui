@@ -30,4 +30,12 @@
     </tr>
     </tbody>
   </table>
+  <br/>
+  <button ng-if="$ctrl.isLoggedIn"
+    class="btn btn-secondary-action"
+    id="force_update_codes"
+    ng-disabled="!$ctrl.codes"
+    ng-click="$ctrl.update()" translate>
+      Update codes
+  </button>
 </div>

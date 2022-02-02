@@ -4,6 +4,7 @@ import { ViewReferenceDataModal } from './viewReferenceDataModal';
 import { ReferenceData, ReferenceDataCode } from 'app/entities/referenceData';
 import { LanguageContext } from 'app/types/language';
 import { LegacyComponent } from 'app/utils/angular';
+import { UserService } from 'app/services/userService';
 
 @LegacyComponent({
   bindings: {
@@ -20,12 +21,16 @@ export class ReferenceDataViewComponent {
   context: LanguageContext;
   title: string;
   showCodes: boolean;
-  codes: ReferenceDataCode[];
+  codes: ReferenceDataCode[] | null;
+  isLoggedIn: boolean;
 
   constructor(private $scope: IScope,
               private referenceDataService: ReferenceDataService,
-              private viewReferenceDataModal: ViewReferenceDataModal) {
+              private viewReferenceDataModal: ViewReferenceDataModal,
+              private userService: UserService) {
     'ngInject';
+
+    this.isLoggedIn = userService.isLoggedIn();
   }
 
   $onInit() {
@@ -37,6 +42,14 @@ export class ReferenceDataViewComponent {
         this.codes = [];
       }
     });
+  }
+
+  update() {
+    if (this.referenceData && !this.referenceData.isExternal()) {
+      this.codes = null;
+      this.referenceDataService.getReferenceDataCodes(this.referenceData, true)
+        .then(values => this.codes = values);
+    }
   }
 
   browse() {
