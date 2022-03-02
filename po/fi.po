@@ -137,6 +137,9 @@ msgstr "Tekniset nimiavaruudet"
 msgid "Reference data information"
 msgstr "Koodiston tiedot"
 
+msgid "Update codes"
+msgstr "Päivitä koodit"
+
 msgid "Terminologies"
 msgstr "Käytetyt sanastot"
 

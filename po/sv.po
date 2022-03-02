@@ -137,6 +137,9 @@ msgstr "Tekniska namnrymder"
 msgid "Reference data information"
 msgstr "Uppgifter om kodlistan"
 
+msgid "Update codes"
+msgstr "Uppdatera koder"
+
 msgid "Terminologies"
 msgstr "Ordlistor som används"
 
