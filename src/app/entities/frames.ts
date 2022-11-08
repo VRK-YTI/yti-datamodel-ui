@@ -311,6 +311,7 @@ export function classFrame(data: any) {
       memberOf: {
         '@omitDefault': true,
         '@default': [],
+        '@embed': '@always',
         isPartOf: {
           '@embed': '@always'
         }
