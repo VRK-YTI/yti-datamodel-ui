@@ -445,6 +445,11 @@ msgstr ""
 "julkisten tietojen loogisesta tietomallityöstä avointa ja julkista, minkä "
 "vuoksi tietomallien hyödyntäminen organisaatiorajojen yli helpottuu."
 
+msgid "ToolInfoDeprecation"
+msgstr ""
+"Uusi tietomallit-työkalu otetaan käyttöön 12.6. "
+"Ethän enää muokkaa tietomalleja tässä ympäristössä."
+
 msgid "Search model"
 msgstr "Hae tietomallia"
 

@@ -449,6 +449,11 @@ msgstr ""
 "förvaltningen öppen och offentlig, vilket underlättar användningen av "
 "informationsmodeller över organisationsgränserna."
 
+msgid "ToolInfoDeprecation"
+msgstr ""
+"Det nya verktyget för Informationsmodeller kommer att uppdateras den 12.6. "
+"Redigera inte informationsmodeller i det här verktyget längre."
+
 msgid "Search model"
 msgstr "Hämta informationsmodell"
 
