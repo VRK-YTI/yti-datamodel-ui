@@ -443,6 +443,11 @@ msgstr ""
 "the information structures to support interoperability of information "
 "systems."
 
+msgid "ToolInfoDeprecation"
+msgstr ""
+"The new Data Vocabularies tool will be launched on 12.6. "
+"Please, do not edit data models in this environment anymore."
+
 msgid "Search model"
 msgstr ""
 

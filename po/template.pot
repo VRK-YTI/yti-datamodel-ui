@@ -410,6 +410,9 @@ msgstr ""
 msgid "ToolInfo"
 msgstr ""
 
+msgid "ToolInfoDeprecation"
+msgstr ""
+
 msgid "Search model"
 msgstr ""
 
