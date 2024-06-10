@@ -445,8 +445,8 @@ msgstr ""
 
 msgid "ToolInfoDeprecation"
 msgstr ""
-"The new Data Vocabularies tool will be launched on 12.6. "
-"Please, do not edit data models in this environment anymore."
+"This is replaced version version of Data Vocabularies tool. "
+"<a href=\"https://tietomallit.suomi.fi/en\" target=\"_blank\" rel=\"noopener noreferrer\">Go to the new version of Data Vocabularies tool.</a>"
 
 msgid "Search model"
 msgstr ""
