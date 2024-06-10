@@ -445,7 +445,7 @@ msgstr ""
 
 msgid "ToolInfoDeprecation"
 msgstr ""
-"This is replaced version version of Data Vocabularies tool. "
+"This is replaced version of Data Vocabularies tool. "
 "<a href=\"https://tietomallit.suomi.fi/en\" target=\"_blank\" rel=\"noopener noreferrer\">Go to the new version of Data Vocabularies tool.</a>"
 
 msgid "Search model"
