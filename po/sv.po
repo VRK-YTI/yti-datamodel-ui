@@ -451,8 +451,8 @@ msgstr ""
 
 msgid "ToolInfoDeprecation"
 msgstr ""
-"Det nya verktyget för Informationsmodeller kommer att uppdateras den 12.6. "
-"Redigera inte informationsmodeller i det här verktyget längre."
+"Detta är en ersatt version. "
+"<a href=\"https://tietomallit.suomi.fi/en\" target=\"_blank\" rel=\"noopener noreferrer\">Gå till det nya verktyget för Informationsmodeller.</a>"
 
 msgid "Search model"
 msgstr "Hämta informationsmodell"

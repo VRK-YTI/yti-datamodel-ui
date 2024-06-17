@@ -447,8 +447,8 @@ msgstr ""
 
 msgid "ToolInfoDeprecation"
 msgstr ""
-"Uusi tietomallit-työkalu otetaan käyttöön 12.6. "
-"Ethän enää muokkaa tietomalleja tässä ympäristössä."
+"Tämä versio Tietomallit-työkalusta on korvattu. "
+"<a href=\"https://tietomallit.suomi.fi/\" target=\"_blank\" rel=\"noopener noreferrer\">Siirry uuteen Tietomallit-työkaluun.</a>"
 
 msgid "Search model"
 msgstr "Hae tietomallia"
